@@ -1,16 +1,17 @@
-const year = document.getElementById("year");
-year.textContent = new Date().getFullYear();
+const tabs = document.querySelectorAll("[data-record]");
+const panels = document.querySelectorAll("[data-record-panel]");
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.12 }
-);
+function showRecord(name) {
+  tabs.forEach((tab) => {
+    const active = tab.dataset.record === name;
+    tab.classList.toggle("active", active);
+    tab.setAttribute("aria-selected", String(active));
+  });
+  panels.forEach((panel) => {
+    const active = panel.dataset.recordPanel === name;
+    panel.hidden = !active;
+    panel.classList.toggle("active", active);
+  });
+}
 
-document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+tabs.forEach((tab) => tab.addEventListener("click", () => showRecord(tab.dataset.record)));
