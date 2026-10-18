@@ -180,5 +180,5 @@ export const experiences = [
 export const awards = [
   "CCLC Youth Leadership Award",
   "Ontario Volunteer Service Award",
-  "Platinum Jubilee Medal of Elizabeth II",
+  "Platinum Jubilee Commemorative Badge",
 ];
